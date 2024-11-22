@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose";
+import { Tcar } from "./carstore.interface";
 
-const carStoreSchema = new Schema({
+const carStoreSchema = new Schema<Tcar>({
   brand: {
     type: String,
     required: true,
@@ -42,6 +43,6 @@ const carStoreSchema = new Schema({
   timestamps: true, 
 });
 
-// Export  model
-const Car = model("Car", carStoreSchema);
+// Export  model now
+const Car = model <Tcar>("Car", carStoreSchema);
 export default Car;

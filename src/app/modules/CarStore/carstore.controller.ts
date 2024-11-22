@@ -1,14 +1,44 @@
-import { Request, Response } from "express"
-import Car from "./carstore.model";
+import { Request, Response } from "express";
 
-const CreateCarstore=async(req:Request,res:Response)=>{
-    const payload=req.body;
-    const result=await Car.create(payload)
+import { carService } from "./carstore.service";
+
+const CreateCarstore = async (req: Request, res: Response) => {
+  try {
+    const payload = req.body;
+    const result=await carService.createCar(payload)
     res.json({
-        message:'carstor created sucessfully',
-        data:result,
-    })
-}
-export const carstoreController={
-    CreateCarstore,
-}
+      message: "car-store created successfully",
+      data: result,
+    });
+  } catch (error) {
+    res.json({
+      status: false,
+      message: "Something went wrong",
+      error,
+    });
+  }
+};
+
+const getAllCars = async (req: Request, res: Response) => {
+  try {
+    const searchTerm = req.query.searchTerm?.toString() || '';  
+    const result = await carService.getAllCars(searchTerm);
+    res.json({
+      message: "Cars retrieved successfully",
+      status: true,
+      data: result,
+    });
+  } catch (error) {
+    res.json({
+      status: false,
+      message: "Something went wrong",
+      error,
+    });
+  }
+};
+
+// Properly export the controller
+export const useController = {
+  CreateCarstore,
+  getAllCars,
+};

@@ -1,13 +1,13 @@
 import { Model } from 'mongoose';
 export type Tcar={
-  band:string,
+  brand:string,
   model:string,
-  year:string,
+  year:number,
   price:number,
   category: 'Sedan' | 'SUV' | 'Truck' | 'Coupe' | 'Convertible';
   description:string,
-  quantity:string,
-  inStock:boolean
+  quantity:number,
+  inStock:boolean,
 
 };
 export type Torder={
@@ -16,6 +16,6 @@ export type Torder={
   quantity: number;
   totalPrice: number;
 }
-export interface carstorModel extends Model <Tcar>{
-    isUserExists(id: string): Promise<Tcar | null>;  
-}
+// export interface carstorModel extends Model <Tcar>{
+//     isUserExists(id: string): Promise<Tcar | null>;  
+// }

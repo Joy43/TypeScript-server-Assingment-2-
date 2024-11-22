@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-import { env } from 'process';
+
 import app from './app';
 import config from './app/config';
 

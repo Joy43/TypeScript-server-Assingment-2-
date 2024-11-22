@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { carstoreController } from "./carstore.controller";
+import { useController } from "./carstore.controller";
 
+const useRouter = Router();
 
-const carstoreRouter=Router()
-carstoreRouter.post('/create-car',carstoreController.CreateCarstore)
+// Create car 
+useRouter.post('/cars', useController.CreateCarstore);
+// get all car
+useRouter.get('/cars',useController.getAllCars)
 
-export default carstoreRouter;
+export default useRouter;
