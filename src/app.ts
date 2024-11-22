@@ -5,7 +5,10 @@ app.use(express.json())
 app.use(cors())
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('assingment-2 sever is start');
+  res.send({
+    status:true,
+    message:'assingment-2 sever is start 🏃🏽‍♂️‍➡️'
+  });
 });
 
 export default app;

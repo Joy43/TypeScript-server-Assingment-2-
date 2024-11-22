@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose = require('mongoose');
 const app_1 = __importDefault(require("./app"));
 const config_1 = __importDefault(require("./app/config"));
-function main() {
+function server() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             //    ---------mongodb connected-----------------
@@ -30,7 +30,7 @@ function main() {
             mongoose.connection.on('disconnected', () => {
                 console.warn('MongoDB connection disconnected');
             });
-            // -----sever port--------------
+            //  -----sever port--------------
             app_1.default.listen(config_1.default.port, () => {
                 console.log(`Server is running at http://localhost:${config_1.default.port}`);
             });
@@ -40,4 +40,4 @@ function main() {
         }
     });
 }
-main();
+server();

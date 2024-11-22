@@ -3,9 +3,9 @@ import { env } from 'process';
 import app from './app';
 import config from './app/config';
 
-async function main() {
+async function server() {
     try {
-    //    ---------mongodb connected-----------------
+             //    ---------mongodb connected-----------------
         await mongoose.connect(config.database_url as string);
 
         // ------------cheack connect mongodb---------------
@@ -19,7 +19,7 @@ async function main() {
         mongoose.connection.on('disconnected', () => {
             console.warn('MongoDB connection disconnected');
         });
-// -----sever port--------------
+                //  -----sever port--------------
         app.listen(config.port, () => {
             console.log(`Server is running at http://localhost:${config.port}`);
         });
@@ -27,4 +27,4 @@ async function main() {
         console.error('Error starting the application:', error);
     }
 }
-main();
+server();
