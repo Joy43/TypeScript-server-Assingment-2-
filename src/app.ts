@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 // Mount the routes
-app.use('/api', useRouter);
+app.use('/api/cars', useRouter);
 
 // Default route
 app.get('/', (req: Request, res: Response) => {

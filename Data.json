@@ -1,0 +1,34 @@
+[
+    {
+      "brand": "Toyota",
+      "model": "Corolla",
+      "year": 2023,
+      "price": 20000,
+      "category": "Sedan",
+      "description": "A compact and efficient sedan perfect for daily commutes.",
+      "quantity": 60,
+      "inStock": true
+    },
+    {
+      "brand": "Chevrolet",
+      "model": "Tahoe",
+      "year": 2024,
+      "price": 45000,
+      "category": "SUV",
+      "description": "A spacious SUV with advanced technology and off-road capabilities.",
+      "quantity": 25,
+      "inStock": true
+    },
+    {
+      "brand": "Ram",
+      "model": "1500",
+      "year": 2025,
+      "price": 38000,
+      "category": "Truck",
+      "description": "A robust truck built for tough jobs and heavy hauling.",
+      "quantity": 40,
+      "inStock": true
+    }
+  
+  ]
+  

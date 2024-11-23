@@ -11,12 +11,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useController = void 0;
 const carstore_service_1 = require("./carstore.service");
+/*
+
+Create a Car
+Endpoint: /api/cars
+Method: POST
+Request Body:
+*/
 const CreateCarstore = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const payload = req.body;
         const result = yield carstore_service_1.carService.createCar(payload);
         res.json({
             message: "car-store created successfully",
+            status: true,
             data: result,
         });
     }
@@ -28,6 +36,10 @@ const CreateCarstore = (req, res) => __awaiter(void 0, void 0, void 0, function*
         });
     }
 });
+/*
+Query: A list of all cars from the same category,
+ you’ll take this as /api/cars?searchTerm=category
+ */
 const getAllCars = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     try {
@@ -47,8 +59,56 @@ const getAllCars = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
         });
     }
 });
+/* -------------
+Get a Specific Car
+Endpoint: /api/cars/:carId
+Method: GET
+Response: The details of a specific car by ID
+--------------
+*/
+const SpecificCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.params);
+        const carId = req.params.carId;
+        const result = yield carstore_service_1.carService.SpecificCar(carId);
+        res.send({
+            status: true,
+            message: 'car getting successfully',
+            result,
+        });
+    }
+    catch (error) {
+        res.json({
+            status: false,
+            message: 'Something went wrong',
+            error,
+        });
+    }
+});
+//  update content
+const updateCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const carId = req.params.carId;
+        const body = req.body;
+        const result = yield carstore_service_1.carService.updateCar(carId, body);
+        res.send({
+            status: true,
+            message: 'car updated successfully',
+            result,
+        });
+    }
+    catch (error) {
+        res.json({
+            status: false,
+            message: 'Something went wrong',
+            error,
+        });
+    }
+});
 // Properly export the controller
 exports.useController = {
     CreateCarstore,
     getAllCars,
+    SpecificCar,
+    updateCar
 };

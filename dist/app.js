@@ -11,7 +11,7 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 // Mount the routes
-app.use('/api', carstore_router_1.default);
+app.use('/api/cars', carstore_router_1.default);
 // Default route
 app.get('/', (req, res) => {
     res.send({

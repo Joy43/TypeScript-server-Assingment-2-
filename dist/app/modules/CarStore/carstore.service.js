@@ -19,6 +19,7 @@ const createCar = (payload) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield carstore_model_1.default.create(payload);
     return result;
 });
+//  search find car
 const getAllCars = (searchTerm) => __awaiter(void 0, void 0, void 0, function* () {
     let query = {};
     if (searchTerm) {
@@ -33,7 +34,21 @@ const getAllCars = (searchTerm) => __awaiter(void 0, void 0, void 0, function* (
     const cars = yield carstore_model_1.default.find(query);
     return cars;
 });
+//  specific user
+const SpecificCar = (carId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield carstore_model_1.default.findById(carId);
+    return result;
+});
+// ===== update======
+const updateCar = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield carstore_model_1.default.findByIdAndUpdate(id, data, {
+        new: true,
+    });
+    return result;
+});
 exports.carService = {
     createCar,
-    getAllCars
+    getAllCars,
+    SpecificCar,
+    updateCar
 };
