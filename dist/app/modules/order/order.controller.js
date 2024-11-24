@@ -28,7 +28,7 @@ const createOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 });
-// -------get order
+// -------    get order -----------------
 const getOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const result = yield order_service_1.Orderservice.getOrder();
@@ -46,9 +46,29 @@ const getOrder = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
+// ----------- getRevenue--------------
 const getRevenue = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const result = yield order_service_1.Orderservice.getRevenue();
+        res.send({
+            success: true,
+            message: 'Revenue calculated successfully',
+            data: {
+                totalRevenue: result,
+            },
+        });
+    }
+    catch (error) {
+        res.status(500).send({
+            success: false,
+            message: 'Something went wrong while calculating revenue',
+            error,
+        });
+    }
+    ;
 });
 exports.Ordercontroller = {
     createOrder,
-    getOrder
+    getOrder,
+    getRevenue
 };

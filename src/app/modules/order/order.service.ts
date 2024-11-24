@@ -23,8 +23,26 @@ const getOrder = async () => {
     throw error;
   }
 };
-
+// --------------revenue--------------
+const getRevenue = async () => {
+    try {
+      const result = await Order.aggregate([
+        {
+          $group: {
+            _id: null, 
+            totalRevenue: { $sum: "$totalPrice" }, 
+          },
+        },
+      ]);
+  
+      return result[0]?.totalRevenue || 0; 
+    } catch (error) {
+      console.error("Error in calculateRevenue service:", error);
+      throw error;
+    }
+  };
 export const Orderservice = {
   createOrder,
   getOrder,
+  getRevenue 
 };

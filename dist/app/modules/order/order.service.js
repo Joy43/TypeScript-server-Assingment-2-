@@ -31,7 +31,27 @@ const getOrder = () => __awaiter(void 0, void 0, void 0, function* () {
         throw error;
     }
 });
+// --------------revenue--------------
+const getRevenue = () => __awaiter(void 0, void 0, void 0, function* () {
+    var _a;
+    try {
+        const result = yield order_model_1.default.aggregate([
+            {
+                $group: {
+                    _id: null,
+                    totalRevenue: { $sum: "$totalPrice" },
+                },
+            },
+        ]);
+        return ((_a = result[0]) === null || _a === void 0 ? void 0 : _a.totalRevenue) || 0;
+    }
+    catch (error) {
+        console.error("Error in calculateRevenue service:", error);
+        throw error;
+    }
+});
 exports.Orderservice = {
     createOrder,
     getOrder,
+    getRevenue
 };

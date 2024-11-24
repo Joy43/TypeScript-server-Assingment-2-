@@ -20,7 +20,7 @@ const createOrder = async (req: Request, res: Response)=> {
 }
 };
 
-// -------get order
+// -------    get order -----------------
 const getOrder = async (req: Request, res: Response) => {
   try {
     const result = await Orderservice.getOrder()
@@ -37,12 +37,30 @@ const getOrder = async (req: Request, res: Response) => {
       error,
     })
   }
-}
+};
 
-const getRevenue=async(req:Request,res:Response)=>{
-  
+// ----------- getRevenue--------------
+const getRevenue =async(req:Request,res:Response)=>{
+try{
+const result=await Orderservice.getRevenue();
+res.send({
+  success: true,
+  message: 'Revenue calculated successfully',
+  data: {
+    totalRevenue: result,
+  },
+});
+}
+catch (error){
+  res.status(500).send({
+    success: false,
+    message: 'Something went wrong while calculating revenue',
+    error,
+})
+};
 }
 export const Ordercontroller = {
   createOrder,
-  getOrder
+  getOrder,
+  getRevenue  
 };
