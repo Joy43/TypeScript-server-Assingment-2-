@@ -65,7 +65,7 @@ const SpecificCar = async (req: Request, res: Response) => {
 
     res.send({
       status: true,
-      message: 'car getting successfully',
+      message: 'Car retrieved successfully',
       result,
     })
   } catch (error) {
@@ -77,7 +77,12 @@ const SpecificCar = async (req: Request, res: Response) => {
   }
 }
 
-//  update content
+/* 
+Update a Car
+Endpoint: /api/cars/:carId
+Method: PUT
+Request Body: (Car details to update)
+*/
 const updateCar = async (req: Request, res: Response) => {
   try {
     const carId = req.params.carId
@@ -96,6 +101,24 @@ const updateCar = async (req: Request, res: Response) => {
       error,
     })
   }
+};
+// -----------
+const deleteCar=async(req:Request,res:Response)=>{
+try{
+  const carId=req.params.carId;
+  await carService.deleteCar(carId)
+  res.json({
+    status:true,
+    message:'Delete sucessfull',
+    reult:{},
+  })
+}catch (error) {
+  res.json({
+    status: false,
+    message: 'Something went wrong',
+    error,
+  })
+}
 }
 
 // Properly export the controller
@@ -103,5 +126,6 @@ export const useController = {
   CreateCarstore,
   getAllCars,
   SpecificCar,
-  updateCar 
+  updateCar ,
+  deleteCar
 };

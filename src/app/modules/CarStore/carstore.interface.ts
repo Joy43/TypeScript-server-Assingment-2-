@@ -16,6 +16,6 @@ export type Torder={
   quantity: number;
   totalPrice: number;
 }
-// export interface carstorModel extends Model <Tcar>{
-//     isUserExists(id: string): Promise<Tcar | null>;  
-// }
+export interface carstorModel extends Model <Tcar>{
+    isUserExists(id: string): Promise<Tcar | null>;  
+}

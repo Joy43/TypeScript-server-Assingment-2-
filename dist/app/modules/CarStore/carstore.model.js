@@ -5,12 +5,12 @@ const carStoreSchema = new mongoose_1.Schema({
     brand: {
         type: String,
         required: [true, " Please provide the brand name."],
-        minlength: 2,
-        maxlength: 30
+        set: (value) => value.toUpperCase(),
+        maxlength: 50
     },
     model: {
         type: String,
-        required: [true, "Model name is required. Please provide the model name."],
+        required: [true, " Please provide the model name."],
     },
     year: {
         type: Number,

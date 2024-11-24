@@ -27,7 +27,7 @@ const getAllCars = async (searchTerm: string): Promise<Tcar[]> => {
   const SpecificCar = async (carId: string) => {
     const result = await Car.findById(carId)
     return result;
-  }
+  };
   // ===== update======
 
   const updateCar = async (id: string, data: Tcar) => {
@@ -35,10 +35,17 @@ const getAllCars = async (searchTerm: string): Promise<Tcar[]> => {
       new: true,
     })
     return result
+  };
+  const deleteCar = async (id: string) => {
+    const result = await Car.findByIdAndDelete(id)
+    return result
   }
+
 export const carService={
     createCar,
     getAllCars,
     SpecificCar,
-    updateCar 
+    updateCar,
+    deleteCar
+
 }

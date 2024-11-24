@@ -73,7 +73,7 @@ const SpecificCar = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         const result = yield carstore_service_1.carService.SpecificCar(carId);
         res.send({
             status: true,
-            message: 'car getting successfully',
+            message: 'Car retrieved successfully',
             result,
         });
     }
@@ -85,7 +85,12 @@ const SpecificCar = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         });
     }
 });
-//  update content
+/*
+Update a Car
+Endpoint: /api/cars/:carId
+Method: PUT
+Request Body: (Car details to update)
+*/
 const updateCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const carId = req.params.carId;
@@ -105,10 +110,30 @@ const updateCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         });
     }
 });
+// -----------
+const deleteCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const carId = req.params.carId;
+        yield carstore_service_1.carService.deleteCar(carId);
+        res.json({
+            status: true,
+            message: 'Delete sucessfull',
+            reult: {},
+        });
+    }
+    catch (error) {
+        res.json({
+            status: false,
+            message: 'Something went wrong',
+            error,
+        });
+    }
+});
 // Properly export the controller
 exports.useController = {
     CreateCarstore,
     getAllCars,
     SpecificCar,
-    updateCar
+    updateCar,
+    deleteCar
 };

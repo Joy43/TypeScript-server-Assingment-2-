@@ -46,9 +46,14 @@ const updateCar = (id, data) => __awaiter(void 0, void 0, void 0, function* () {
     });
     return result;
 });
+const deleteCar = (id) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield carstore_model_1.default.findByIdAndDelete(id);
+    return result;
+});
 exports.carService = {
     createCar,
     getAllCars,
     SpecificCar,
-    updateCar
+    updateCar,
+    deleteCar
 };
