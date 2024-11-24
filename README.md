@@ -34,8 +34,23 @@ $ npm install
         ```bash
         https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
         ```
-
+* order add
+    * On Postman (post method):
+        ```bash
+        https://assingment-2-rosy.vercel.app/api/order
+        ```
+* order revenue
+    * On Postman (get method):
+        ```bash
+        https://assingment-2-rosy.vercel.app/api/order/revenue
+        ```
 
 
 #### Note: 
+### run local
+
+Run locally:
+
+```bash
+$ npm run dev
 
