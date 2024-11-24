@@ -5,12 +5,9 @@ import Order from "./order.model";
 
 
 const createOrder = async (payload: Torder) => {
-    //   const result = await Tour.create(payload)
-  
+ 
     const data = new Order(payload)
-  
-    //   data.color = "red"
-  
+
     const result = await data.save()
     return result
   }
@@ -37,8 +34,8 @@ const getRevenue = async () => {
   
       return result[0]?.totalRevenue || 0; 
     } catch (error) {
-      console.error("Error in calculateRevenue service:", error);
-      throw error;
+      console.log("Error in calculateRevenue service:", error);
+    
     }
   };
 export const Orderservice = {

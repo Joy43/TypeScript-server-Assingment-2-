@@ -46,8 +46,7 @@ const getRevenue = () => __awaiter(void 0, void 0, void 0, function* () {
         return ((_a = result[0]) === null || _a === void 0 ? void 0 : _a.totalRevenue) || 0;
     }
     catch (error) {
-        console.error("Error in calculateRevenue service:", error);
-        throw error;
+        console.log("Error in calculateRevenue service:", error);
     }
 });
 exports.Orderservice = {
