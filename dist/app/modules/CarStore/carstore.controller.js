@@ -71,14 +71,20 @@ const SpecificCar = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
         console.log(req.params);
         const carId = req.params.carId;
         const result = yield carstore_service_1.carService.SpecificCar(carId);
-        res.send({
+        if (!result) {
+            res.status(404).json({
+                status: false,
+                message: `Car with ID ${carId} not found`,
+            });
+        }
+        res.status(200).send({
             status: true,
             message: 'Car retrieved successfully',
             result,
         });
     }
     catch (error) {
-        res.json({
+        res.status(500).json({
             status: false,
             message: 'Something went wrong',
             error,
@@ -101,28 +107,42 @@ const updateCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             message: 'car updated successfully',
             result,
         });
+        if (!result) {
+            res.status(404).json({
+                status: false,
+                messsage: `Car with ID ${carId} not found`
+            });
+            res.status(200).send({
+                status: true,
+                message: 'Car retrieved successfully',
+                result,
+            });
+        }
     }
     catch (error) {
-        res.json({
+        res.status(500).json({
             status: false,
             message: 'Something went wrong',
             error,
         });
     }
 });
-// -----------
+/*
+Endpoint: /api/cars/:carId
+Method: DELETE
+Response: Success message confirming the car has been deleted
+*/
 const deleteCar = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const carId = req.params.carId;
         yield carstore_service_1.carService.deleteCar(carId);
-        res.json({
+        res.status(200).json({
             status: true,
-            message: 'Delete sucessfull',
-            reult: {},
+            message: 'Car deleted successfully',
         });
     }
     catch (error) {
-        res.json({
+        res.status(500).json({
             status: false,
             message: 'Something went wrong',
             error,

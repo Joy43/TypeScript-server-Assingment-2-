@@ -62,14 +62,19 @@ const SpecificCar = async (req: Request, res: Response) => {
     const carId = req.params.carId
 
     const result = await carService.SpecificCar(carId)
-
-    res.send({
+if(!result){
+  res.status(404).json({
+    status:false,
+    message: `Car with ID ${carId} not found`,
+  })
+}
+    res.status(200).send({
       status: true,
       message: 'Car retrieved successfully',
       result,
     })
   } catch (error) {
-    res.json({
+    res.status(500).json({
       status: false,
       message: 'Something went wrong',
       error,
@@ -94,32 +99,52 @@ const updateCar = async (req: Request, res: Response) => {
       message: 'car updated successfully',
       result,
     })
+    if(!result){
+      res.status(404).json({
+        status:false,
+        messsage:`Car with ID ${carId} not found`
+      }) 
+      res.status(200).send({
+        status: true,
+        message: 'Car retrieved successfully',
+        result,
+      })
+    }
   } catch (error) {
-    res.json({
+    res.status(500).json({
       status: false,
       message: 'Something went wrong',
       error,
     })
   }
 };
-// -----------
-const deleteCar=async(req:Request,res:Response)=>{
-try{
-  const carId=req.params.carId;
-  await carService.deleteCar(carId)
-  res.json({
-    status:true,
-    message:'Delete sucessfull',
-    reult:{},
-  })
-}catch (error) {
-  res.json({
-    status: false,
-    message: 'Something went wrong',
-    error,
-  })
-}
-}
+
+/* 
+Endpoint: /api/cars/:carId
+Method: DELETE
+Response: Success message confirming the car has been deleted
+*/
+const deleteCar = async (req: Request, res: Response) => {
+  try {
+    const carId = req.params.carId;
+    await carService.deleteCar(carId);
+
+   
+
+    res.status(200).json({
+      status: true,
+      message: 'Car deleted successfully',
+     
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: false,
+      message: 'Something went wrong',
+      error,
+    });
+  }
+};
+
 
 // Properly export the controller
 export const useController = {

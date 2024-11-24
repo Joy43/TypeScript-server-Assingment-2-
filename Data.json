@@ -28,6 +28,16 @@
       "description": "A robust truck built for tough jobs and heavy hauling.",
       "quantity": 40,
       "inStock": true
+    },
+    {
+      "brand": "curel",
+      "model": "4500",
+      "year": 2025,
+      "price": 30000,
+      "category": "Truck",
+      "description": "A robust truck built for tough jobs and heavy hauling.",
+      "quantity": 10,
+      "inStock": false
     }
   
   ]

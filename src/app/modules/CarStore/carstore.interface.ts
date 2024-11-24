@@ -10,12 +10,12 @@ export type Tcar={
   inStock:boolean,
 
 };
-export type Torder={
-    email:string,
-    car: string; 
-  quantity: number;
-  totalPrice: number;
-}
+// export type Torder={
+//     email:string,
+//     car: string; 
+//   quantity: number;
+//   totalPrice: number;
+// }
 export interface carstorModel extends Model <Tcar>{
     isUserExists(id: string): Promise<Tcar | null>;  
 }

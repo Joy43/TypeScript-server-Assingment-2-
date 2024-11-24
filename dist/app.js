@@ -6,12 +6,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const carstore_router_1 = __importDefault(require("./app/modules/CarStore/carstore.router"));
+const order_router_1 = __importDefault(require("./app/modules/order/order.router"));
 const app = (0, express_1.default)();
 // Middleware
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 // Mount the routes
 app.use('/api/cars', carstore_router_1.default);
+app.use('/api/order', order_router_1.default);
 // Default route
 app.get('/', (req, res) => {
     res.send({
