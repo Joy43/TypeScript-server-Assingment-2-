@@ -1,34 +1,38 @@
-## Assingment -2
-### card operation ([using this api url](https://assingment-2-rosy.vercel.app))
+## Assignment - 2
+### Card Operation ([Using this API URL](https://assingment-2-rosy.vercel.app))
 
+---
 
+### Installation
 
-### Installation :
+Run the following command to install dependencies:
 
 ```bash
 $ npm install
 
 ```
 * Get search category
-    * On postman
+    * On Postman:
         ```bash
-     https://assingment-2-rosy.vercel.app/api/cars?searchTerm=Sedan
+        https://assingment-2-rosy.vercel.app/api/cars?searchTerm=Sedan
         ```
-```
-* specific car get
-    * On postman
+
+* Specific car get
+    * On Postman:
         ```bash
-   https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
+        https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
         ```
-* update car
-    * On postman put menthod
+
+* Update car
+    * On Postman (PUT method):
         ```bash
-https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
+        https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
         ```
-* update car
-    * On postman delete menthod
+
+* Delete car
+    * On Postman (DELETE method):
         ```bash
-https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
+        https://assingment-2-rosy.vercel.app/api/cars/674168c0c7f957d621f4e00e
         ```
 
 
