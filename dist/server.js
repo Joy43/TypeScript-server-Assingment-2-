@@ -12,24 +12,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const mongoose = require('mongoose');
+const mongoose_1 = __importDefault(require("mongoose"));
 const app_1 = __importDefault(require("./app"));
 const config_1 = __importDefault(require("./app/config"));
 function server() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             //    ---------mongodb connected-----------------
-            yield mongoose.connect(config_1.default.database_url);
-            // ------------cheack connect mongodb---------------
-            mongoose.connection.on('connected', () => {
-                console.log('MongoDB connected successfully');
-            });
-            mongoose.connection.on('error', (err) => {
-                console.error('MongoDB connection error:', err);
-            });
-            mongoose.connection.on('disconnected', () => {
-                console.warn('MongoDB connection disconnected');
-            });
+            yield mongoose_1.default.connect(config_1.default.database_url);
             //  -----sever port--------------
             app_1.default.listen(config_1.default.port, () => {
                 console.log(`Server is running at http://localhost:${config_1.default.port}`);

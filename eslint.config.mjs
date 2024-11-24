@@ -15,6 +15,7 @@ export default [
       'no-unused-expressions': 'error',
       'prefer-const': 'error',
       'no-console': 'warn',
+      
     },
   },
   pluginJs.configs.recommended,

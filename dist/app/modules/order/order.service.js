@@ -15,9 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Orderservice = void 0;
 const order_model_1 = __importDefault(require("./order.model"));
 const createOrder = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    //   const result = await Tour.create(payload)
     const data = new order_model_1.default(payload);
-    //   data.color = "red"
     const result = yield data.save();
     return result;
 });
